@@ -40,7 +40,7 @@ $(function(){
               console.log(geocodeData.address.state + ', ' + geocodeData.address.country);
               html += ' over ' + geocodeData.address.state + ', ' + geocodeData.address.country + '<br/></p>';
             }//end of if/else statement
-            $('#results').append(html);
+            $('#results').html(html);
           }//end of success
         });//closing of reverse geocoding ajax
       }//closing of first AJAX success
