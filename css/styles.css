@@ -1,4 +1,16 @@
-body{
-  background: #000;
-  color: #fff;
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#results{
+  flex-basis: 60%;
+  text-align: center;
+}
+
+img{
+  flex-basis: 25%;
+  max-width: 25%;
+  height: auto;
 }
