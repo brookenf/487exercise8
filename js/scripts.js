@@ -7,7 +7,7 @@ $(function(){
   var geocodeData = [];
   var lat = '';
   var long = '';
-  var html = '<p>The International Space Station is currently';
+  var html = '';
   var i;
 
 
@@ -32,21 +32,20 @@ $(function(){
           url: url2,
           async: true,
           success: function(geocodeData){
+            html += '<p>The International Space Station is currently'
             if(url2 = geocodeData.error){
               console.log('ISS is over ocean');
-              html += ' somewhere over the ocean';
+              html += ' somewhere over the ocean <br/><p>';
             }else{
               console.log(geocodeData.address.state + ', ' + geocodeData.address.country);
-              html += ' at ' + geocodeData.address.state + ', ' + geocodeData.address.country;
+              html += ' over ' + geocodeData.address.state + ', ' + geocodeData.address.country + '<br/></p>';
             }//end of if/else statement
-            $('#results').replaceWith(html);
-            setTimeout(updateFive, 5000);
+            $('#results').append(html);
           }//end of success
         });//closing of reverse geocoding ajax
       }//closing of first AJAX success
     });//end of AJAX
+    setTimeout(updateFive, 5000);
   }//closing of five second timeout function
   updateFive();
-
-
 });//closing of document.ready
