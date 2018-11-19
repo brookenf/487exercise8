@@ -1,18 +1,18 @@
 $(function(){
   console.log('scripts loaded');
 
-  var url = 'http://api.open-notify.org/iss-now.json';
-  var url2 = '';
-  var data = [];
-  var geocodeData = [];
-  var lat = '';
-  var long = '';
-  var html = '';
-  var i;
-
-
   //UPDATE THE AJAX REQUEST EVERY FIVE SECONDS TO CONTINUOUSLY SEE WHERE THE ISS IS
   function updateFive(){
+    //DECLARE VARIABLES
+    var url = 'http://api.open-notify.org/iss-now.json';
+    var url2 = '';
+    var data = [];
+    var geocodeData = [];
+    var lat = '';
+    var long = '';
+    var html = '';
+
+    //FIRST AJAX REQUEST
     $.ajax({
       type: 'GET',
       url: url,
@@ -32,15 +32,14 @@ $(function(){
           url: url2,
           async: true,
           success: function(geocodeData){
-            html += '<p>The International Space Station is currently'
             if(url2 = geocodeData.error){
               console.log('ISS is over ocean');
-              html += ' somewhere over the ocean <br/><p>';
+              html += ' somewhere over the ocean <br/>';
             }else{
               console.log(geocodeData.address.state + ', ' + geocodeData.address.country);
-              html += ' over ' + geocodeData.address.state + ', ' + geocodeData.address.country + '<br/></p>';
+              html += ' over ' + geocodeData.address.state + ', ' + geocodeData.address.country + '<br/>';
             }//end of if/else statement
-            $('#results').html(html);
+            $('#overwrite').html(html);
           }//end of success
         });//closing of reverse geocoding ajax
       }//closing of first AJAX success
