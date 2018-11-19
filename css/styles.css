@@ -1,16 +1,19 @@
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
 .flex{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
 }
 
 #results{
-  flex-basis: 60%;
   text-align: center;
 }
 
 img{
-  flex-basis: 25%;
   max-width: 25%;
   height: auto;
 }
